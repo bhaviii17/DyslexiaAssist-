@@ -1,0 +1,1937 @@
+/* Content Popup Overlay Styles */
+.dyslexia-content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(26, 77, 74, 0.8);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.content-popup-container {
+    width: 90vw;
+    max-width: 1000px;
+    height: 85vh;
+    background: #f0fffe;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(26, 77, 74, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: popupSlideIn 0.3s ease-out;
+    border: 1px solid #a7d8d6;
+}
+
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Popup Header */
+.content-popup-header {
+    background: #e8f7f5;
+    color: #1a4d4a;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 1px solid rgba(90, 158, 154, 0.3);
+    box-shadow: 0 2px 4px rgba(26, 77, 74, 0.1);
+}
+
+.header-left h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d5a56;
+}
+
+.page-title {
+    font-size: 12px;
+    opacity: 0.7;
+    display: block;
+    margin-top: 2px;
+    color: #5a9e9a;
+}
+
+.header-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.control-group-main {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.control-group-secondary {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.control-group-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: auto;
+}
+
+.control-btn {
+    background: rgba(90, 158, 154, 0.15);
+    border: 1px solid rgba(90, 158, 154, 0.3);
+    color: #2d5a56;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    text-align: center;
+    min-height: 36px;
+    padding: 8px 12px;
+}
+
+.control-btn:hover {
+    background: rgba(90, 158, 154, 0.25);
+    color: #1a4d4a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(26, 77, 74, 0.15);
+}
+
+.control-btn.primary {
+    background: #2d5a56;
+    border: 1px solid rgba(45, 90, 86, 0.5);
+    color: white;
+    padding: 10px 16px;
+    font-weight: 600;
+}
+
+.control-btn.primary:hover {
+    background: #1a4d4a;
+    color: white;
+}
+
+.control-btn.compact {
+    padding: 6px 10px;
+    font-size: 11px;
+    min-height: 32px;
+}
+
+.control-btn.settings {
+    background: rgba(90, 158, 154, 0.15);
+    padding: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #5a9e9a;
+}
+
+.control-btn.settings:hover {
+    background: rgba(90, 158, 154, 0.25);
+    color: #2d5a56;
+}
+
+.btn-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.btn-label {
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.close-btn {
+    background: #c85450;
+    border: 1px solid rgba(200, 84, 80, 0.6);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #a8433f;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(200, 84, 80, 0.3);
+}
+
+/* Popup Toolbar */
+.content-popup-toolbar {
+    background: #e8f7f5;
+    padding: 12px 20px;
+    border-bottom: 1px solid #a7d8d6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.reading-controls {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.reading-controls label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #2d5a56;
+}
+
+.reading-controls input[type="range"] {
+    width: 80px;
+    height: 4px;
+    border-radius: 2px;
+    background: #a7d8d6;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.reading-controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #2d5a56;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(26, 77, 74, 0.3);
+}
+
+.reading-controls select {
+    padding: 4px 8px;
+    border: 1px solid #a7d8d6;
+    border-radius: 4px;
+    font-size: 12px;
+    background: white;
+    color: #2d5a56;
+}
+
+.reading-controls span {
+    font-size: 11px;
+    color: #5a9e9a;
+    min-width: 35px;
+}
+
+.processing-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2d5a56;
+    font-size: 13px;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #e9ecef;
+    border-top: 2px solid #2d5a56;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Popup Body */
+.content-popup-body {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.content-area {
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1a4d4a;
+    background: #f0fffe;
+}
+
+.content-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-area::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.content-area::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Content Area Styling */
+.content-area h1, .content-area h2, .content-area h3,
+.content-area h4, .content-area h5, .content-area h6 {
+    color: #2d5a56;
+    margin: 20px 0 10px 0;
+    line-height: 1.3;
+}
+
+.content-area h1 { font-size: 24px; }
+.content-area h2 { font-size: 20px; }
+.content-area h3 { font-size: 18px; }
+
+.content-area p {
+    margin: 12px 0;
+    text-align: justify;
+}
+
+.content-area img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.content-area a {
+    color: #2d5a56;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(45, 90, 86, 0.3);
+}
+
+.content-area a:hover {
+    border-bottom-color: #2d5a56;
+}
+
+.content-area ul, .content-area ol {
+    margin: 15px 0;
+    padding-left: 25px;
+}
+
+.content-area li {
+    margin: 8px 0;
+}
+
+.content-area blockquote {
+    border-left: 4px solid #5a9e9a;
+    padding-left: 15px;
+    margin: 20px 0;
+    font-style: italic;
+    color: #5a9e9a;
+}
+
+/* Processed Content Styling */
+.processed-content {
+    background: #f8f9fa;
+    border-left: 4px solid #28a745;
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+    margin: 10px 0;
+}
+
+.processed-content.simplify {
+    border-left-color: #667eea;
+}
+
+.processed-content.summarize {
+    border-left-color: #ffc107;
+}
+
+.processed-content.translate {
+    border-left-color: #17a2b8;
+}
+
+/* Color Filters */
+.content-area.filter-yellow {
+    background: #fffbf0;
+    color: #8b4513;
+}
+
+.content-area.filter-blue {
+    background: #f0f8ff;
+    color: #1e3a8a;
+}
+
+.content-area.filter-sepia {
+    background: #f4f3f0;
+    color: #8b4513;
+    filter: sepia(0.3);
+}
+
+/* Popup Footer */
+.content-popup-footer {
+    background: #e8f7f5;
+    padding: 12px 20px;
+    border-top: 1px solid #a7d8d6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.reading-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: #5a9e9a;
+}
+
+.footer-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-controls .btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary {
+    background: #5a9e9a;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #4a8b85;
+}
+
+.btn-primary {
+    background: #2d5a56;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1a4d4a;
+}
+
+/* Popup Messages */
+.popup-message {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+.popup-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.popup-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.popup-message.warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.popup-message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #b8daff;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-popup-container {
+        width: 95vw;
+        height: 90vh;
+    }
+    
+    .content-popup-header {
+        padding: 12px 15px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    
+    .header-left h2 {
+        font-size: 16px;
+        text-align: center;
+    }
+    
+    .header-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .control-group-main,
+    .control-group-secondary {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .control-group-actions {
+        justify-content: center;
+        margin-left: 0;
+    }
+    
+    .control-btn {
+        flex: 1;
+        min-width: 80px;
+        max-width: 120px;
+    }
+    
+    .control-btn.compact {
+        min-width: 70px;
+    }
+    
+    .content-popup-toolbar {
+        padding: 10px 15px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .reading-controls {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .content-area {
+        padding: 15px;
+    }
+    
+    .content-popup-footer {
+        padding: 10px 15px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .reading-stats {
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    
+    .footer-controls {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-controls {
+        gap: 8px;
+    }
+    
+    .control-group-main,
+    .control-group-secondary {
+        gap: 6px;
+    }
+    
+    .control-btn {
+        padding: 6px 8px;
+        font-size: 11px;
+        min-width: 60px;
+    }
+    
+    .control-btn.primary {
+        padding: 8px 12px;
+    }
+    
+    .btn-label {
+        font-size: 10px;
+    }
+    
+    .control-btn.settings {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .content-popup-container {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    .content-popup-toolbar,
+    .content-popup-footer {
+        background: #4a5568;
+        border-color: #718096;
+    }
+    
+    .content-area {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    .content-area h1, .content-area h2, .content-area h3,
+    .content-area h4, .content-area h5, .content-area h6 {
+        color: #f7fafc;
+    }
+    
+    .processed-content {
+        background: #4a5568;
+        color: #e2e8f0;
+    }
+}
+
+/* AI Feature Styles */
+.dyslexia-text-wrapper {
+    position: relative;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.text-toggle-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-toggle-btn:hover {
+    background: #5a67d8;
+}
+
+.simplified-text {
+    font-weight: 500;
+    line-height: 1.6;
+    color: #2d3748;
+}
+
+.original-text {
+    color: #718096;
+    font-style: italic;
+}
+
+/* Summary Box Styles */
+.dyslexia-summary-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.summary-header h4 {
+    margin: 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.close-summary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.close-summary:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.summary-content {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Popup Styles */
+.dyslexia-popup {
+    position: fixed;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.popup-header {
+    background: #667eea;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h4 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.popup-header button {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.popup-header button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.popup-content {
+    padding: 15px;
+}
+
+.popup-content h5 {
+    margin: 0 0 5px 0;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.popup-content p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.popup-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.popup-actions button {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.popup-actions button:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Word Assistance Tooltip */
+.word-assistance-tooltip {
+    position: fixed;
+    background: #2d3748;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 10000;
+    max-width: 250px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-content strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #90cdf4;
+}
+
+.tooltip-content p {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.tooltip-content button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+/* Voice Command Button */
+#dyslexia-voice-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #2d5a56;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(45, 90, 86, 0.4);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+#dyslexia-voice-btn:hover {
+    background: #1a4d4a;
+    transform: scale(1.1);
+}
+
+/* Translation Indicator */
+.translated-text {
+    position: relative;
+    border-left: 3px solid #10b981;
+    padding-left: 8px;
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.translated-text::before {
+    content: '🌐';
+    position: absolute;
+    top: 0;
+    left: -15px;
+    font-size: 12px;
+}
+
+/* Processing States */
+.dyslexia-processing {
+    opacity: 0.7;
+    position: relative;
+}
+
+.dyslexia-processing::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #667eea;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Accessibility Enhancements */
+.dyslexia-high-contrast .dyslexia-popup {
+    border: 2px solid #000;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+}
+
+.dyslexia-high-contrast .text-toggle-btn,
+.dyslexia-high-contrast #dyslexia-voice-btn {
+    border: 2px solid #000;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .dyslexia-popup {
+        background: #2d3748;
+        color: white;
+        border-color: #4a5568;
+    }
+    
+    .popup-actions button {
+        background: #2d3748;
+        color: #90cdf4;
+        border-color: #90cdf4;
+    }
+    
+    .popup-actions button:hover {
+        background: #90cdf4;
+        color: #2d3748;
+    }
+}
+
+/* Reading guide styles */
+#dyslexia-reading-guide {
+    position: fixed !important;
+    top: 50% !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 3px !important;
+    background-color: rgba(255, 0, 0, 0.7) !important;
+    z-index: 10000 !important;
+    pointer-events: none !important;
+    transform: translateY(-50%) !important;
+    transition: top 0.1s ease !important;
+}
+
+/* Enhanced link visibility */
+.dyslexia-highlight-links a {
+    background-color: yellow !important;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
+    text-decoration: underline !important;
+    font-weight: bold !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Reduced motion styles */
+.dyslexia-reduce-animations *,
+.dyslexia-reduce-animations *::before,
+.dyslexia-reduce-animations *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+/* High contrast mode enhancements */
+.dyslexia-high-contrast {
+    filter: contrast(200%) !important;
+}
+
+.dyslexia-high-contrast * {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Text enhancement utilities */
+.dyslexia-enhanced-text {
+    font-variant-ligatures: none !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+/* Focus enhancements */
+.dyslexia-focus-enhancement *:focus {
+    outline: 3px solid #4CAF50 !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 5px rgba(76, 175, 80, 0.3) !important;
+}
+
+/* Custom scrollbar for better visibility */
+.dyslexia-custom-scrollbar::-webkit-scrollbar {
+    width: 12px !important;
+}
+
+.dyslexia-custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+    border-radius: 6px !important;
+}
+
+.dyslexia-custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888 !important;
+    border-radius: 6px !important;
+}
+
+.dyslexia-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555 !important;
+}
+
+/* Text selection enhancement */
+.dyslexia-enhanced-selection ::selection {
+    background-color: #B3E5FC !important;
+    color: #000 !important;
+}
+
+.dyslexia-enhanced-selection ::-moz-selection {
+    background-color: #B3E5FC !important;
+    color: #000 !important;
+}
+
+/* Paragraph spacing improvement */
+.dyslexia-improved-spacing p {
+    margin-bottom: 1.5em !important;
+}
+
+.dyslexia-improved-spacing h1,
+.dyslexia-improved-spacing h2,
+.dyslexia-improved-spacing h3,
+.dyslexia-improved-spacing h4,
+.dyslexia-improved-spacing h5,
+.dyslexia-improved-spacing h6 {
+    margin-top: 1.5em !important;
+    margin-bottom: 0.75em !important;
+}
+
+/* List improvements */
+.dyslexia-improved-lists ul,
+.dyslexia-improved-lists ol {
+    padding-left: 2em !important;
+    margin-bottom: 1em !important;
+}
+
+.dyslexia-improved-lists li {
+    margin-bottom: 0.5em !important;
+}
+
+/* Table readability */
+.dyslexia-table-enhancement table {
+    border-collapse: separate !important;
+    border-spacing: 2px !important;
+}
+
+.dyslexia-table-enhancement td,
+.dyslexia-table-enhancement th {
+    padding: 8px 12px !important;
+    border: 1px solid #ddd !important;
+}
+
+.dyslexia-table-enhancement tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Form input enhancements */
+.dyslexia-form-enhancement input,
+.dyslexia-form-enhancement textarea,
+.dyslexia-form-enhancement select {
+    font-size: 16px !important;
+    padding: 8px 12px !important;
+    border: 2px solid #ccc !important;
+    border-radius: 4px !important;
+}
+
+.dyslexia-form-enhancement input:focus,
+.dyslexia-form-enhancement textarea:focus,
+.dyslexia-form-enhancement select:focus {
+    border-color: #4CAF50 !important;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3) !important;
+}
+
+/* AI Assistant Panel Styles */
+.ai-assistant-panel,
+.voice-commands-panel {
+    background: #2d5a56;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white;
+    box-shadow: 0 8px 32px rgba(45, 90, 86, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.ai-panel-header,
+.voice-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ai-panel-header h3,
+.voice-panel-header h3 {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.close-panel-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-panel-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.ai-features {
+    display: grid;
+    gap: 20px;
+}
+
+.ai-feature-group {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ai-feature-group h4 {
+    margin: 0 0 15px 0;
+    font-size: 1.1em;
+    color: #e0e0ff;
+}
+
+.ai-btn,
+.voice-btn {
+    background: #4a8b85;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 5px 5px 5px 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(74, 139, 133, 0.3);
+    min-width: 120px;
+}
+
+.ai-btn:hover,
+.voice-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 139, 133, 0.4);
+    background: #3a7570;
+}
+
+.ai-btn:active,
+.voice-btn:active {
+    transform: translateY(0);
+}
+
+.ai-btn:disabled,
+.voice-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.qa-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.qa-input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+}
+
+.qa-input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.qa-input-group input:focus {
+    outline: none;
+    border-color: #4a8b85;
+    box-shadow: 0 0 0 2px rgba(74, 139, 133, 0.3);
+}
+
+/* AI Results Styling */
+.ai-result {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a4d4a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 4px 20px rgba(26, 77, 74, 0.1);
+    border-left: 4px solid #4a8b85;
+}
+
+.ai-result h4 {
+    margin: 0 0 15px 0;
+    color: #2d5a56;
+    font-size: 1.2em;
+}
+
+.difficulty-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #4facfe;
+}
+
+.metric-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.metric-value {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.keywords-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.keyword-item {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.keyword {
+    font-weight: 600;
+}
+
+.confidence {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.sentiment-result {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sentiment-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.sentiment-label {
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #4facfe;
+}
+
+.sentiment-confidence {
+    background: #e8f4fd;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #2c5aa0;
+}
+
+.ai-suggestions,
+.sentiment-tips {
+    margin-top: 20px;
+}
+
+.ai-suggestions h5,
+.sentiment-tips h5 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+.ai-suggestions ul,
+.sentiment-tips ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.ai-suggestions li,
+.sentiment-tips li {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.user-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: #e8f4fd;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #2c5aa0;
+    font-weight: 600;
+}
+
+.recommendations-list {
+    margin-top: 15px;
+}
+
+.recommendation {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #4facfe;
+}
+
+.recommendation.high {
+    background: #fff3cd;
+    border-left-color: #ffc107;
+}
+
+.recommendation.medium {
+    background: #d1ecf1;
+    border-left-color: #17a2b8;
+}
+
+.recommendation.low {
+    background: #f8f9fa;
+    border-left-color: #6c757d;
+}
+
+/* Voice Commands Styling */
+.voice-controls {
+    text-align: center;
+}
+
+.voice-status {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.voice-status.info {
+    background: rgba(23, 162, 184, 0.2);
+    color: #17a2b8;
+}
+
+.voice-status.success {
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.voice-status.error {
+    background: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+}
+
+.voice-status.listening {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.voice-transcript {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    min-height: 50px;
+    text-align: left;
+}
+
+.transcript-final {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.transcript-interim {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+.voice-commands-help {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.voice-commands-help h4 {
+    margin-bottom: 10px;
+    color: #e0e0ff;
+}
+
+.voice-commands-help ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.voice-commands-help li {
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Content Type Badge */
+.content-type-badge {
+    display: inline-block;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.processed-content {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enhanced Responsive Design for AI Panels */
+@media (max-width: 768px) {
+    .ai-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .difficulty-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .keywords-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    
+    .user-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .qa-input-group {
+        flex-direction: column;
+    }
+    
+    .sentiment-main {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .dyslexia-content-overlay .content-popup-container {
+        width: 95%;
+        height: 95%;
+        margin: 2.5%;
+    }
+    
+    .content-popup-header .header-controls {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .content-popup-toolbar .reading-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .content-popup-footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .reading-stats {
+        justify-content: center;
+    }
+}
+
+/* Additional Styles for New Features */
+
+/* Accessibility Analysis Popup */
+.accessibility-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10005;
+    font-family: Arial, sans-serif;
+}
+
+.accessibility-popup {
+    background: white;
+    border-radius: 12px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.accessibility-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #f0fffe;
+}
+
+.accessibility-header h3 {
+    margin: 0;
+    color: #2d5a56;
+    font-size: 24px;
+}
+
+.accessibility-content {
+    padding: 20px;
+}
+
+.score-section {
+    margin-bottom: 30px;
+}
+
+.overall-score {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.overall-score.good {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border: 2px solid #28a745;
+}
+
+.overall-score.fair {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 2px solid #ffc107;
+}
+
+.overall-score.poor {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    border: 2px solid #dc3545;
+}
+
+.score-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.score-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #28a745, #20c997);
+    transition: width 0.3s ease;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.metric-card h5 {
+    margin: 0 0 10px 0;
+    color: #2d5a56;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.metric-score {
+    font-size: 24px;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.metric-details {
+    font-size: 12px;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+.recommendations-section {
+    margin-bottom: 30px;
+}
+
+.recommendations-section h4 {
+    color: #2d5a56;
+    margin-bottom: 15px;
+}
+
+.recommendations-list {
+    list-style: none;
+    padding: 0;
+}
+
+.recommendations-list li {
+    background: #e7f6f5;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border-left: 4px solid #2d5a56;
+}
+
+.dyslexia-specific {
+    background: #f0fffe;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #b8e6e1;
+}
+
+.dyslexia-specific h4 {
+    color: #2d5a56;
+    margin: 0 0 15px 0;
+}
+
+.insight-grid {
+    display: grid;
+    gap: 10px;
+}
+
+.insight-item {
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 3px solid #2d5a56;
+    font-size: 14px;
+}
+
+.accessibility-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+    background: #f8f9fa;
+}
+
+/* Enhanced Control Buttons */
+.control-group-enhanced {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.control-btn.focus {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.control-btn.ruler {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+}
+
+.control-btn.tracker {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+}
+
+.control-btn.highlight {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    color: white;
+}
+
+.control-btn.access {
+    background: linear-gradient(135deg, #fa709a, #fee140);
+    color: white;
+}
+
+/* Focus Mode Styles */
+#dyslexia-focus-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.dyslexia-focus-highlight {
+    background-color: rgba(255, 255, 0, 0.3) !important;
+    border-radius: 3px !important;
+    padding: 2px 4px !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.dyslexia-reading-ruler {
+    position: fixed !important;
+    width: 100% !important;
+    height: 3px !important;
+    background: rgba(255, 0, 0, 0.7) !important;
+    z-index: 10000 !important;
+    pointer-events: none !important;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5) !important;
+}
+
+/* Reading Progress Tracker */
+#dyslexia-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 10002;
+    transition: opacity 0.3s ease;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    transition: width 0.3s ease;
+}
+
+#dyslexia-reading-stats {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 280px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10003;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Text-to-Speech Controls */
+#dyslexia-tts-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10004;
+    font-family: Arial, sans-serif;
+    min-width: 200px;
+}
+
+/* Word Highlighter */
+.dyslexia-word-highlight {
+    background-color: rgba(255, 235, 59, 0.4) !important;
+    border-radius: 3px !important;
+    padding: 1px 2px !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.dyslexia-word-highlight:hover {
+    background-color: rgba(255, 235, 59, 0.6) !important;
+}
+
+.dyslexia-syllable-0 { background-color: rgba(255, 235, 59, 0.4) !important; }
+.dyslexia-syllable-1 { background-color: rgba(76, 175, 80, 0.4) !important; }
+.dyslexia-syllable-2 { background-color: rgba(33, 150, 243, 0.4) !important; }
+.dyslexia-syllable-3 { background-color: rgba(255, 152, 0, 0.4) !important; }
+.dyslexia-syllable-4 { background-color: rgba(156, 39, 176, 0.4) !important; }
+
+.dyslexia-word-popup {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10001;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.dyslexia-word-popup h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.dyslexia-syllables {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.dyslexia-definition {
+    margin: 10px 0;
+    color: #666;
+    font-style: italic;
+}
+
+/* Enhanced Button Styles */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2d5a56, #4a9b8e);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1e3d39, #357066);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #f8f9fa;
+    color: #495057;
+    border: 1px solid #dee2e6;
+}
+
+.btn-secondary:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+}
+
+/* Responsive Design for New Features */
+@media (max-width: 768px) {
+    .accessibility-popup {
+        max-width: 95vw;
+        margin: 20px;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .control-group-enhanced {
+        flex-wrap: wrap;
+    }
+    
+    #dyslexia-reading-stats,
+    #dyslexia-tts-controls {
+        width: 250px;
+        right: 10px;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Pulse animation for highlighting */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "dyslexia-assist",
+  "version": "1.0.0",
+  "description": "A browser extension to help users with dyslexia by providing accessibility features",
+  "main": "manifest.json",
+  "scripts": {
+    "build": "echo 'No build process required for this extension'",
+    "test": "echo 'No tests specified'",
+    "package": "zip -r dyslexia-assist.zip . -x '*.git*' 'node_modules/*' '*.DS_Store' 'package*.json'",
+    "dev": "echo 'Load the extension in Chrome developer mode'"
+  },
+  "keywords": [
+    "dyslexia",
+    "accessibility",
+    "browser-extension",
+    "chrome-extension",
+    "reading-assistance",
+    "font-customization",
+    "visual-aids"
+  ],
+  "author": "Accessibility Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/dyslexia-assist.git"
+  },
+  "devDependencies": {},
+  "engines": {
+    "chrome": ">=88.0.0"
+  }
+}

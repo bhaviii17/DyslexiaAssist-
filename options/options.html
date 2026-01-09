@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyslexiaAssist - Options</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <img src="../icons/icon48.svg" alt="DyslexiaAssist" class="logo">
+                <div class="header-text">
+                    <h1>DyslexiaAssist</h1>
+                    <p>Advanced accessibility settings for better reading experience</p>
+                </div>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="reading">Reading</button>
+            <button class="tab-button" data-tab="visual">Visual</button>
+            <button class="tab-button" data-tab="ai">AI Features</button>
+            <button class="tab-button" data-tab="advanced">Advanced</button>
+            <button class="tab-button" data-tab="about">About</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- Reading Tab -->
+            <div class="tab-content active" id="reading-tab">
+                <div class="section">
+                    <h2>Font Settings</h2>
+                    <div class="setting-group">
+                        <label for="font-family-advanced">Font Family:</label>
+                        <select id="font-family-advanced">
+                            <option value="default">Default</option>
+                            <option value="open-dyslexic">OpenDyslexic</option>
+                            <option value="arial">Arial</option>
+                            <option value="verdana">Verdana</option>
+                            <option value="comic-sans">Comic Sans MS</option>
+                            <option value="calibri">Calibri</option>
+                            <option value="trebuchet">Trebuchet MS</option>
+                        </select>
+                        <small>Choose a font that's easier to read</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="font-size-advanced">Font Size:</label>
+                        <div class="range-container">
+                            <input type="range" id="font-size-advanced" min="10" max="32" value="16">
+                            <span id="font-size-display">16px</span>
+                        </div>
+                        <small>Adjust text size for better readability</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="font-weight">Font Weight:</label>
+                        <select id="font-weight">
+                            <option value="normal">Normal</option>
+                            <option value="bold">Bold</option>
+                            <option value="lighter">Lighter</option>
+                        </select>
+                        <small>Change text thickness</small>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Text Spacing</h2>
+                    <div class="setting-group">
+                        <label for="line-height-advanced">Line Height:</label>
+                        <div class="range-container">
+                            <input type="range" id="line-height-advanced" min="1" max="4" step="0.1" value="1.5">
+                            <span id="line-height-display">1.5</span>
+                        </div>
+                        <small>Space between lines of text</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="letter-spacing-advanced">Letter Spacing:</label>
+                        <div class="range-container">
+                            <input type="range" id="letter-spacing-advanced" min="0" max="10" step="0.1" value="0">
+                            <span id="letter-spacing-display">0px</span>
+                        </div>
+                        <small>Space between individual letters</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="word-spacing-advanced">Word Spacing:</label>
+                        <div class="range-container">
+                            <input type="range" id="word-spacing-advanced" min="0" max="20" step="0.5" value="0">
+                            <span id="word-spacing-display">0px</span>
+                        </div>
+                        <small>Space between words</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="paragraph-spacing">Paragraph Spacing:</label>
+                        <div class="range-container">
+                            <input type="range" id="paragraph-spacing" min="0" max="3" step="0.1" value="1">
+                            <span id="paragraph-spacing-display">1em</span>
+                        </div>
+                        <small>Space between paragraphs</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Tab -->
+            <div class="tab-content" id="visual-tab">
+                <div class="section">
+                    <h2>Visual Aids</h2>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="reading-guide-advanced">
+                            <span class="checkmark"></span>
+                            Reading Guide
+                        </label>
+                        <small>Shows a horizontal line that follows your cursor</small>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="highlight-links-advanced">
+                            <span class="checkmark"></span>
+                            Highlight Links
+                        </label>
+                        <small>Makes links more visible with background colors</small>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="focus-enhancement">
+                            <span class="checkmark"></span>
+                            Enhanced Focus
+                        </label>
+                        <small>Improves visibility of focused elements</small>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="text-selection">
+                            <span class="checkmark"></span>
+                            Enhanced Text Selection
+                        </label>
+                        <small>Better text selection highlighting</small>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Color Filters</h2>
+                    <div class="setting-group">
+                        <label for="color-overlay">Color Overlay:</label>
+                        <select id="color-overlay">
+                            <option value="none">None</option>
+                            <option value="yellow">Yellow Tint</option>
+                            <option value="blue">Blue Tint</option>
+                            <option value="green">Green Tint</option>
+                            <option value="pink">Pink Tint</option>
+                            <option value="sepia">Sepia</option>
+                            <option value="high-contrast">High Contrast</option>
+                        </select>
+                        <small>Apply color filters to reduce eye strain</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="brightness-advanced">Brightness:</label>
+                        <div class="range-container">
+                            <input type="range" id="brightness-advanced" min="30" max="200" value="100">
+                            <span id="brightness-display">100%</span>
+                        </div>
+                        <small>Adjust screen brightness</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="contrast">Contrast:</label>
+                        <div class="range-container">
+                            <input type="range" id="contrast" min="50" max="200" value="100">
+                            <span id="contrast-display">100%</span>
+                        </div>
+                        <small>Adjust text contrast</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Features Tab -->
+            <div class="tab-content" id="ai-tab">
+                <div class="section">
+                    <h2>AI Configuration</h2>
+                    <div class="setting-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="ai-enabled">
+                            <span class="checkmark"></span>
+                            Enable AI Features
+                        </label>
+                        <small>Enables intelligent text processing, personalization, and adaptive features</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="google-ai-key">Google AI Studio API Key:</label>
+                        <input type="password" id="google-ai-key" placeholder="Enter your Google AI Studio API key">
+                        <small>Required for AI text processing. <a href="https://makersuite.google.com/app/apikey" target="_blank">Get your free API key from Google AI Studio</a></small>
+                        <div class="api-key-controls" style="margin-top: 10px;">
+                            <button type="button" id="test-api-key" class="btn btn-secondary">Test API Key</button>
+                            <button type="button" id="show-api-key" class="btn btn-secondary">Show/Hide Key</button>
+                            <div id="api-key-status" class="ai-status-message" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Text Processing</h2>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="auto-simplify">
+                            <span class="checkmark"></span>
+                            Auto-Simplify Complex Text
+                        </label>
+                        <small>Automatically simplifies difficult sentences and vocabulary</small>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="auto-summarize">
+                            <span class="checkmark"></span>
+                            Auto-Summarize Long Content
+                        </label>
+                        <small>Creates summaries for articles and long texts</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="summary-length">Summary Length:</label>
+                        <div class="range-container">
+                            <input type="range" id="summary-length" min="50" max="300" value="150">
+                            <span id="summary-length-value">150 words</span>
+                        </div>
+                        <small>Preferred length for AI-generated summaries</small>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Multilingual Support</h2>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="auto-translate">
+                            <span class="checkmark"></span>
+                            Enable Auto-Translation
+                        </label>
+                        <small>Automatically translate content to your preferred language</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="target-language">Target Language:</label>
+                        <select id="target-language">
+                            <option value="en">English</option>
+                            <option value="hi">Hindi (हिन्दी)</option>
+                            <option value="ta">Tamil (தமிழ்)</option>
+                            <option value="te">Telugu (తెలుగు)</option>
+                            <option value="bn">Bengali (বাংলা)</option>
+                            <option value="gu">Gujarati (ગુજરાતી)</option>
+                            <option value="mr">Marathi (मराठी)</option>
+                            <option value="kn">Kannada (ಕನ್ನಡ)</option>
+                            <option value="ml">Malayalam (മലയാളം)</option>
+                        </select>
+                        <small>Content will be translated to this language</small>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Speech Features</h2>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="speech-enabled">
+                            <span class="checkmark"></span>
+                            Enable Text-to-Speech
+                        </label>
+                        <small>Read text aloud with natural voice synthesis</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="speech-rate">Speech Rate:</label>
+                        <div class="range-container">
+                            <input type="range" id="speech-rate" min="0.3" max="2.0" step="0.1" value="0.8">
+                            <span id="speech-rate-value">0.8x</span>
+                        </div>
+                        <small>Adjust speaking speed (slower speeds help with comprehension)</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="speech-voice">Voice Selection:</label>
+                        <select id="speech-voice">
+                            <option value="">Default Voice</option>
+                        </select>
+                        <small>Choose your preferred voice for text-to-speech</small>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="voice-commands">
+                            <span class="checkmark"></span>
+                            Enable Voice Commands
+                        </label>
+                        <small>Control features using voice commands</small>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Personalization</h2>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="adaptive-learning">
+                            <span class="checkmark"></span>
+                            Adaptive Learning
+                        </label>
+                        <small>Let AI learn your preferences and automatically adjust settings</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="reading-speed">Reading Speed Profile:</label>
+                        <select id="reading-speed">
+                            <option value="slow">Slow Reader</option>
+                            <option value="medium">Average Reader</option>
+                            <option value="fast">Fast Reader</option>
+                        </select>
+                        <small>Helps AI optimize content processing for your reading pace</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="complexity-preference">Content Complexity:</label>
+                        <select id="complexity-preference">
+                            <option value="simple">Simple Language</option>
+                            <option value="medium">Standard Language</option>
+                            <option value="complex">Advanced Language</option>
+                        </select>
+                        <small>Preferred complexity level for AI-processed content</small>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Advanced AI Features</h2>
+                    <div class="setting-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="enable-advanced-ai" checked>
+                            <span class="checkmark"></span>
+                            Enable Advanced AI Assistant
+                        </label>
+                        <small>Enables AI-powered reading assistance, smart analysis, and intelligent voice commands</small>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label for="ai-processing-mode">AI Processing Mode:</label>
+                        <select id="ai-processing-mode">
+                            <option value="automatic">Automatic (Recommended)</option>
+                            <option value="manual">Manual Only</option>
+                            <option value="suggestions">Suggestions Only</option>
+                        </select>
+                        <small>Controls when AI features are applied to content</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="difficulty-threshold">Auto-Simplify Threshold:</label>
+                        <div class="range-container">
+                            <input type="range" id="difficulty-threshold" min="1" max="10" value="7">
+                            <span id="difficulty-threshold-value">Grade 7</span>
+                        </div>
+                        <small>Automatically suggest simplification for content above this difficulty level</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="voice-command-language">Voice Command Language:</label>
+                        <select id="voice-command-language">
+                            <option value="en-US">English (US)</option>
+                            <option value="en-GB">English (UK)</option>
+                            <option value="hi-IN">Hindi (India)</option>
+                            <option value="ta-IN">Tamil (India)</option>
+                            <option value="te-IN">Telugu (India)</option>
+                            <option value="bn-IN">Bengali (India)</option>
+                        </select>
+                        <small>Language for voice command recognition</small>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="personalization-learning" checked>
+                            <span class="checkmark"></span>
+                            Enable Learning & Personalization
+                        </label>
+                        <small>Allow the extension to learn from your reading patterns (all data stays local)</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="ai-suggestions-frequency">AI Suggestions Frequency:</label>
+                        <select id="ai-suggestions-frequency">
+                            <option value="minimal">Minimal</option>
+                            <option value="balanced" selected>Balanced (Recommended)</option>
+                            <option value="frequent">Frequent</option>
+                        </select>
+                        <small>How often AI provides reading suggestions and tips</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>Quick AI Actions:</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="quick-simplify" checked>
+                                <span class="checkmark"></span>
+                                Quick Simplify
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="quick-summarize" checked>
+                                <span class="checkmark"></span>
+                                Quick Summarize
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="quick-translate" checked>
+                                <span class="checkmark"></span>
+                                Quick Translate
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="quick-explain" checked>
+                                <span class="checkmark"></span>
+                                Quick Explain
+                            </label>
+                        </div>
+                        <small>Enable quick access buttons for common AI actions</small>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>AI Smart Features:</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="smart-keyword-extraction" checked>
+                                <span class="checkmark"></span>
+                                Smart Keyword Extraction
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="sentiment-analysis" checked>
+                                <span class="checkmark"></span>
+                                Emotional Tone Analysis
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="difficulty-analysis" checked>
+                                <span class="checkmark"></span>
+                                Reading Difficulty Analysis
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="intelligent-qa" checked>
+                                <span class="checkmark"></span>
+                                Intelligent Q&A System
+                            </label>
+                        </div>
+                        <small>Advanced AI capabilities for enhanced reading assistance</small>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Usage Insights</h2>
+                    <div class="insights-container">
+                        <div class="insight-card" id="reading-stats">
+                            <h4>Reading Statistics</h4>
+                            <p>Loading...</p>
+                        </div>
+                        <div class="insight-card" id="feature-usage">
+                            <h4>Most Used Features</h4>
+                            <p>Loading...</p>
+                        </div>
+                        <div class="insight-card" id="recommendations">
+                            <h4>AI Recommendations</h4>
+                            <p>Loading...</p>
+                        </div>
+                    </div>
+                    <button id="view-detailed-analytics" class="btn btn-secondary">View Detailed Analytics</button>
+                </div>
+            </div>
+
+            <!-- Advanced Tab -->
+            <div class="tab-content" id="advanced-tab">
+                <div class="section">
+                    <h2>Animation & Motion</h2>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="reduce-animations-advanced">
+                            <span class="checkmark"></span>
+                            Reduce Animations
+                        </label>
+                        <small>Minimizes moving elements that can be distracting</small>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="pause-gifs">
+                            <span class="checkmark"></span>
+                            Pause GIFs
+                        </label>
+                        <small>Automatically pause animated GIFs</small>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Content Formatting</h2>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="simplify-layout">
+                            <span class="checkmark"></span>
+                            Simplify Page Layout
+                        </label>
+                        <small>Removes unnecessary visual clutter</small>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="justify-text">
+                            <span class="checkmark"></span>
+                            Left-align Text
+                        </label>
+                        <small>Forces left alignment for better readability</small>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Keyboard Shortcuts</h2>
+                    <div class="shortcuts-list">
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Ctrl+Shift+D</span>
+                            <span class="shortcut-desc">Toggle Extension</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Ctrl+Shift+R</span>
+                            <span class="shortcut-desc">Toggle Reading Guide</span>
+                        </div>
+                    </div>
+                    <small>You can customize these shortcuts in Chrome's extension settings</small>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div class="tab-content" id="about-tab">
+                <div class="section">
+                    <h2>About DyslexiaAssist</h2>
+                    <p>DyslexiaAssist is designed to help people with dyslexia and other reading difficulties by providing customizable accessibility features.</p>
+                    
+                    <h3>Features:</h3>
+                    <ul>
+                        <li>Dyslexia-friendly fonts (including OpenDyslexic)</li>
+                        <li>Adjustable text spacing and sizing</li>
+                        <li>Reading guides and visual aids</li>
+                        <li>Color filters and contrast adjustments</li>
+                        <li>Animation reduction</li>
+                        <li>Link highlighting</li>
+                    </ul>
+
+                    <h3>Tips for Better Reading:</h3>
+                    <ul>
+                        <li>Use the OpenDyslexic font for improved letter recognition</li>
+                        <li>Increase line spacing to 1.5 or higher</li>
+                        <li>Try different color overlays to find what works best</li>
+                        <li>Use the reading guide when reading long passages</li>
+                        <li>Adjust brightness based on your environment</li>
+                    </ul>
+
+                    <div class="version-info">
+                        <p><strong>Version:</strong> 1.0.0</p>
+                        <p><strong>Developer:</strong> Accessibility Team</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-actions">
+                <button id="save-settings" class="btn btn-primary">Save Settings</button>
+                <button id="reset-all" class="btn btn-secondary">Reset All</button>
+                <button id="export-settings" class="btn btn-secondary">Export Settings</button>
+                <button id="import-settings" class="btn btn-secondary">Import Settings</button>
+            </div>
+            <div class="status-message" id="status-message"></div>
+        </footer>
+    </div>
+
+    <input type="file" id="import-file" accept=".json" style="display: none;">
+    <script src="options.js"></script>
+</body>
+</html>

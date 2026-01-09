@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google AI API Model Explorer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0fffe;
+            color: #333;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-left: 4px solid #2d5a56;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background: #2d5a56;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover { background: #1a4d4a; }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #e8f7f5; color: #2d5a56; }
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .model-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .model-item:hover {
+            background: #e9ecef;
+        }
+        .model-item.working {
+            background: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .model-item.failed {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Google AI API Model Explorer</h1>
+    <p>Find the correct model names for your API key</p>
+    
+    <div class="card">
+        <h3>Step 1: Enter API Key</h3>
+        <input type="password" id="apiKeyInput" placeholder="Paste your Google AI Studio API key">
+        <button class="btn" onclick="toggleApiKeyVisibility()">Show/Hide</button>
+    </div>
+
+    <div class="card">
+        <h3>Step 2: Discover Available Models</h3>
+        <button class="btn" onclick="discoverModels()" id="discoverBtn">Discover Models</button>
+        <button class="btn" onclick="testCommonModels()" id="testBtn">Test Common Models</button>
+        <div id="modelsResult" class="result" style="display: none;"></div>
+    </div>
+
+    <div class="card">
+        <h3>Step 3: Test Models</h3>
+        <div id="modelsList"></div>
+        <div id="testResult" class="result" style="display: none;"></div>
+    </div>
+
+    <div class="card">
+        <h3>Step 4: Working Configuration</h3>
+        <div id="workingConfig" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        let workingModels = [];
+
+        function showResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = `result ${type}`;
+            element.style.display = 'block';
+        }
+
+        function toggleApiKeyVisibility() {
+            const input = document.getElementById('apiKeyInput');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        async function discoverModels() {
+            const apiKey = document.getElementById('apiKeyInput').value.trim();
+            if (!apiKey) {
+                showResult('modelsResult', 'Please enter an API key first', 'error');
+                return;
+            }
+
+            document.getElementById('discoverBtn').disabled = true;
+            showResult('modelsResult', 'Fetching available models from Google AI...', 'info');
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const models = data.models || [];
+                    
+                    if (models.length === 0) {
+                        showResult('modelsResult', 'No models found in API response', 'error');
+                        return;
+                    }
+
+                    let modelsList = 'Available Models:\n\n';
+                    const modelListDiv = document.getElementById('modelsList');
+                    modelListDiv.innerHTML = '';
+
+                    models.forEach((model, index) => {
+                        const modelName = model.name || `Model ${index + 1}`;
+                        const displayName = model.displayName || 'No display name';
+                        const description = model.description || 'No description';
+                        
+                        modelsList += `${index + 1}. ${modelName}\n   Display: ${displayName}\n   Desc: ${description}\n\n`;
+                        
+                        // Create clickable model item
+                        const modelDiv = document.createElement('div');
+                        modelDiv.className = 'model-item';
+                        modelDiv.innerHTML = `
+                            <strong>${modelName}</strong><br>
+                            <small>${displayName}</small>
+                        `;
+                        modelDiv.onclick = () => testSingleModel(modelName.replace('models/', ''));
+                        modelListDiv.appendChild(modelDiv);
+                    });
+
+                    showResult('modelsResult', modelsList, 'success');
+                } else {
+                    const errorText = await response.text();
+                    showResult('modelsResult', `Failed to fetch models\nStatus: ${response.status}\nError: ${errorText}`, 'error');
+                }
+            } catch (error) {
+                showResult('modelsResult', `Connection failed: ${error.message}`, 'error');
+            } finally {
+                document.getElementById('discoverBtn').disabled = false;
+            }
+        }
+
+        async function testCommonModels() {
+            const apiKey = document.getElementById('apiKeyInput').value.trim();
+            if (!apiKey) {
+                showResult('testResult', 'Please enter an API key first', 'error');
+                return;
+            }
+
+            const commonModels = [
+                'gemini-1.5-flash-latest',
+                'gemini-1.5-flash',
+                'gemini-1.5-pro-latest', 
+                'gemini-1.5-pro',
+                'gemini-pro',
+                'gemini-pro-latest',
+                'text-bison-001',
+                'chat-bison-001'
+            ];
+
+            document.getElementById('testBtn').disabled = true;
+            showResult('testResult', 'Testing common model names...', 'info');
+
+            workingModels = [];
+            let results = 'Testing Common Models:\n\n';
+
+            for (const model of commonModels) {
+                try {
+                    results += `Testing ${model}... `;
+                    
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            contents: [{
+                                parts: [{
+                                    text: 'Say "Hello"'
+                                }]
+                            }]
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.candidates && data.candidates.length > 0) {
+                            results += '✅ WORKING\n';
+                            workingModels.push(model);
+                        } else {
+                            results += '⚠️ Responds but no content\n';
+                        }
+                    } else {
+                        results += `❌ ${response.status} ${response.statusText}\n`;
+                    }
+                } catch (error) {
+                    results += `❌ Error: ${error.message}\n`;
+                }
+                
+                // Small delay to avoid rate limiting
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+
+            showResult('testResult', results, workingModels.length > 0 ? 'success' : 'error');
+            
+            if (workingModels.length > 0) {
+                showWorkingConfig();
+            }
+
+            document.getElementById('testBtn').disabled = false;
+        }
+
+        async function testSingleModel(modelName) {
+            const apiKey = document.getElementById('apiKeyInput').value.trim();
+            if (!apiKey) {
+                showResult('testResult', 'Please enter an API key first', 'error');
+                return;
+            }
+
+            showResult('testResult', `Testing ${modelName}...`, 'info');
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: 'Say "Test successful"'
+                            }]
+                        }]
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response text';
+                    showResult('testResult', `✅ ${modelName} is WORKING!\n\nResponse: ${responseText}`, 'success');
+                    
+                    // Mark model as working in the list
+                    const modelItems = document.querySelectorAll('.model-item');
+                    modelItems.forEach(item => {
+                        if (item.textContent.includes(modelName)) {
+                            item.classList.add('working');
+                        }
+                    });
+
+                    if (!workingModels.includes(modelName)) {
+                        workingModels.push(modelName);
+                        showWorkingConfig();
+                    }
+                } else {
+                    const errorText = await response.text();
+                    showResult('testResult', `❌ ${modelName} failed\n\nStatus: ${response.status}\nError: ${errorText}`, 'error');
+                    
+                    // Mark model as failed
+                    const modelItems = document.querySelectorAll('.model-item');
+                    modelItems.forEach(item => {
+                        if (item.textContent.includes(modelName)) {
+                            item.classList.add('failed');
+                        }
+                    });
+                }
+            } catch (error) {
+                showResult('testResult', `❌ ${modelName} error: ${error.message}`, 'error');
+            }
+        }
+
+        function showWorkingConfig() {
+            if (workingModels.length === 0) return;
+
+            const config = `🎉 Working Configuration Found!
+
+Update your extension files with this model:
+
+For text-processor.js:
+this.model = '${workingModels[0]}';
+
+For options.js test function:
+const modelName = '${workingModels[0]}';
+
+Working models (in order of preference):
+${workingModels.map((m, i) => `${i + 1}. ${m}`).join('\n')}
+
+Copy this model name to your extension configuration!`;
+
+            showResult('workingConfig', config, 'success');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyslexiaAssist - API Setup Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0fffe;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background: #2d5a56;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .step-card {
+            background: white;
+            border-left: 4px solid #2d5a56;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .step-number {
+            background: #2d5a56;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .step-title {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2d5a56;
+        }
+        .code-box {
+            background: #e8f7f5;
+            border: 1px solid #2d5a56;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .btn {
+            background: #2d5a56;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #1a4d4a;
+        }
+        .test-section {
+            background: #e8f7f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔧 DyslexiaAssist AI Setup Guide</h1>
+        <p>Get your AI features working in 5 easy steps</p>
+    </div>
+
+    <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-title">Get Your Free Google AI API Key</div>
+        <p>Google AI Studio provides free API access for testing and development:</p>
+        <ol>
+            <li>Visit <a href="https://makersuite.google.com/app/apikey" target="_blank" class="btn">Google AI Studio</a></li>
+            <li>Sign in with your Google account</li>
+            <li>Click "Create API Key"</li>
+            <li>Copy the generated API key</li>
+        </ol>
+        <div class="warning">
+            <strong>⚠️ Important:</strong> Keep your API key secure and never share it publicly. The free tier includes generous usage limits perfect for testing.
+        </div>
+    </div>
+
+    <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-title">Configure the Extension</div>
+        <p>Add your API key to the DyslexiaAssist extension:</p>
+        <ol>
+            <li>Right-click the DyslexiaAssist extension icon</li>
+            <li>Select "Options" or go to <code>chrome://extensions/</code> and click "Details" → "Extension options"</li>
+            <li>Click the "AI Features" tab</li>
+            <li>Paste your API key in the "Google AI Studio API Key" field</li>
+            <li>Check "Enable AI Features"</li>
+            <li>Click "Save Settings"</li>
+        </ol>
+        <a href="chrome-extension://[extension-id]/options/options.html" class="btn">Open Extension Options</a>
+    </div>
+
+    <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-title">Enable AI Features</div>
+        <p>Make sure all the AI features you want are enabled:</p>
+        <ul>
+            <li>✅ Enable AI Features</li>
+            <li>✅ Auto-Simplify Complex Text</li>
+            <li>✅ Auto-Summarize Long Content</li>
+            <li>✅ Enable Auto-Translation</li>
+            <li>✅ Enable Text-to-Speech</li>
+            <li>✅ Enable Advanced AI Assistant</li>
+        </ul>
+    </div>
+
+    <div class="step-card">
+        <div class="step-number">4</div>
+        <div class="step-title">Test the Features</div>
+        <p>Try the AI features on this page or any website:</p>
+        <ol>
+            <li>Click the DyslexiaAssist extension icon</li>
+            <li>The content popup should appear with organized buttons</li>
+            <li>Try clicking "Simplify", "Summary", or "Translate"</li>
+            <li>Check the "AI Help" button for advanced features</li>
+        </ol>
+    </div>
+
+    <div class="step-card">
+        <div class="step-number">5</div>
+        <div class="step-title">Troubleshooting</div>
+        <p>If you're still getting "AI features not available" errors:</p>
+        <ul>
+            <li><strong>Check API Key:</strong> Make sure it's correctly pasted without extra spaces</li>
+            <li><strong>Reload Extension:</strong> Go to <code>chrome://extensions/</code> and click the reload button</li>
+            <li><strong>Refresh Page:</strong> Reload the webpage you're testing on</li>
+            <li><strong>Check Console:</strong> Press F12, go to Console tab, look for error messages</li>
+            <li><strong>API Limits:</strong> Free tier has daily limits, check if you've exceeded them</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 Test Content for AI Features</h2>
+        <p>Use this complex text to test the AI simplification and summarization features:</p>
+        
+        <div class="code-box">
+            <p><strong>Complex Academic Text:</strong></p>
+            <p>The neurobiological mechanisms underlying dyslexia involve aberrant connectivity patterns within the left hemisphere language network, particularly affecting the integration of orthographic, phonological, and semantic information during reading processes. Contemporary neuroimaging studies utilizing functional magnetic resonance imaging and diffusion tensor imaging have consistently demonstrated hypoactivation in the left occipito-temporal region, specifically the visual word form area, which is critically important for rapid and automatic word recognition.</p>
+            
+            <p><strong>Technical Documentation:</strong></p>
+            <p>The implementation of the artificial intelligence framework leverages state-of-the-art natural language processing algorithms, incorporating transformer-based architectures for semantic understanding and contextual analysis. The system architecture utilizes a microservices approach with containerized deployment strategies to ensure scalability and maintainability across distributed computing environments.</p>
+        </div>
+
+        <div class="success">
+            <strong>✅ Expected Results:</strong> When AI features are working correctly, you should be able to:
+            <ul>
+                <li>Simplify the complex text into easier language</li>
+                <li>Generate concise summaries of long content</li>
+                <li>Translate text to your preferred language</li>
+                <li>Get AI-powered reading assistance and analysis</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <h2>🔗 Quick Links</h2>
+        <p>Essential links for setup and troubleshooting:</p>
+        <a href="https://makersuite.google.com/app/apikey" target="_blank" class="btn">Get API Key</a>
+        <a href="chrome://extensions/" target="_blank" class="btn">Extension Manager</a>
+        <a href="../test-buttons.html" target="_blank" class="btn">Test Page</a>
+        <a href="../analytics/analytics.html" target="_blank" class="btn">Analytics Dashboard</a>
+    </div>
+
+    <script>
+        // Check if extension is loaded and configured
+        document.addEventListener('DOMContentLoaded', function() {
+            // Try to detect if the extension is loaded
+            setTimeout(() => {
+                if (typeof chrome !== 'undefined' && chrome.runtime) {
+                    console.log('✅ Chrome extension API available');
+                    
+                    // Check if DyslexiaAssist is loaded
+                    chrome.storage.sync.get(['google-ai-key', 'ai-enabled'], function(result) {
+                        const apiKey = result['google-ai-key'];
+                        const aiEnabled = result['ai-enabled'];
+                        
+                        if (apiKey && aiEnabled) {
+                            showStatus('✅ API key configured and AI features enabled!', 'success');
+                        } else if (apiKey) {
+                            showStatus('⚠️ API key found, but AI features not enabled. Check options.', 'warning');
+                        } else {
+                            showStatus('❌ No API key configured. Follow the setup steps above.', 'error');
+                        }
+                    });
+                } else {
+                    console.log('❌ Chrome extension API not available');
+                }
+            }, 1000);
+        });
+
+        function showStatus(message, type) {
+            const statusDiv = document.createElement('div');
+            statusDiv.className = type === 'success' ? 'success' : (type === 'warning' ? 'warning' : 'step-card');
+            statusDiv.innerHTML = `<strong>Status:</strong> ${message}`;
+            document.body.insertBefore(statusDiv, document.querySelector('.test-section'));
+        }
+    </script>
+</body>
+</html>

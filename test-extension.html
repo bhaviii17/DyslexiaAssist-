@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyslexiaAssist Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-content {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid #007cba;
+        }
+        .instructions {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007cba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #005a87;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DyslexiaAssist Extension Test Page</h1>
+        
+        <div class="instructions">
+            <h3>Testing Instructions:</h3>
+            <ol>
+                <li><strong>Load the Extension:</strong> Go to chrome://extensions/, enable Developer mode, and click "Load unpacked". Select the extension folder.</li>
+                <li><strong>Check Extension Icon:</strong> Look for the DyslexiaAssist icon in your browser toolbar.</li>
+                <li><strong>Test Popup:</strong> Click the extension icon to open the popup interface.</li>
+                <li><strong>Test Features:</strong> Use the buttons below to test different features.</li>
+            </ol>
+        </div>
+
+        <div id="status-display" class="status info">
+            Extension Status: Checking...
+        </div>
+
+        <div class="test-content">
+            <h2>Sample Content for Testing</h2>
+            <p>This is a sample paragraph that you can use to test the DyslexiaAssist extension features. The text should be modified when you apply different accessibility settings like font changes, spacing adjustments, or AI processing.</p>
+            
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            
+            <p>Try selecting this text and using the AI features to simplify, summarize, or translate it. The extension should provide helpful accessibility improvements for users with dyslexia.</p>
+        </div>
+
+        <div class="test-buttons">
+            <button onclick="testBasicFeatures()">Test Basic Features</button>
+            <button onclick="testAIFeatures()">Test AI Features</button>
+            <button onclick="testVoiceFeatures()">Test Voice Features</button>
+            <button onclick="openExtensionOptions()">Open Extension Options</button>
+            <button onclick="checkExtensionStatus()">Check Extension Status</button>
+        </div>
+
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        // Test functions
+        function updateStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status-display');
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+        }
+
+        function logResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultItem = document.createElement('div');
+            resultItem.className = `status ${type}`;
+            resultItem.textContent = new Date().toLocaleTimeString() + ': ' + message;
+            resultsDiv.appendChild(resultItem);
+        }
+
+        function testBasicFeatures() {
+            logResult('Testing basic accessibility features...', 'info');
+            
+            // Check if extension is loaded
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                try {
+                    chrome.runtime.sendMessage('dyslexia-assist-extension-id', {action: 'ping'}, (response) => {
+                        if (chrome.runtime.lastError) {
+                            logResult('Extension not responding: ' + chrome.runtime.lastError.message, 'error');
+                        } else {
+                            logResult('Extension is responding!', 'success');
+                        }
+                    });
+                } catch (error) {
+                    logResult('Error communicating with extension: ' + error.message, 'error');
+                }
+            } else {
+                logResult('Chrome extension APIs not available', 'error');
+            }
+        }
+
+        function testAIFeatures() {
+            logResult('Testing AI features...', 'info');
+            // Check if AI processing is working
+            const selectedText = window.getSelection().toString();
+            if (selectedText) {
+                logResult('Text selected: "' + selectedText.substring(0, 50) + '..."', 'success');
+                logResult('Try using the extension popup AI features on this text', 'info');
+            } else {
+                logResult('No text selected. Please select some text first.', 'error');
+            }
+        }
+
+        function testVoiceFeatures() {
+            logResult('Testing voice features...', 'info');
+            if ('speechSynthesis' in window) {
+                logResult('Speech synthesis API available', 'success');
+                // Test basic speech
+                const utterance = new SpeechSynthesisUtterance('Testing voice features');
+                speechSynthesis.speak(utterance);
+                logResult('Playing test voice message', 'info');
+            } else {
+                logResult('Speech synthesis not supported', 'error');
+            }
+        }
+
+        function openExtensionOptions() {
+            logResult('Attempting to open extension options...', 'info');
+            // This would normally be done through the extension
+            logResult('Right-click the extension icon and select "Options"', 'info');
+        }
+
+        function checkExtensionStatus() {
+            logResult('Checking extension status...', 'info');
+            
+            // Check for extension-specific elements
+            const extensionElements = document.querySelectorAll('[id*="dyslexia"]');
+            if (extensionElements.length > 0) {
+                logResult(`Found ${extensionElements.length} extension elements on page`, 'success');
+            } else {
+                logResult('No extension elements found on page', 'error');
+            }
+
+            // Check for extension styles
+            const extensionStyles = document.querySelectorAll('style[data-dyslexia]');
+            if (extensionStyles.length > 0) {
+                logResult(`Found ${extensionStyles.length} extension style sheets`, 'success');
+            } else {
+                logResult('No extension styles applied', 'info');
+            }
+        }
+
+        // Auto-check extension status on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                updateStatus('Page loaded. Click "Check Extension Status" to test.', 'info');
+                checkExtensionStatus();
+            }, 1000);
+        });
+
+        // Listen for extension messages
+        window.addEventListener('message', (event) => {
+            if (event.data && event.data.source === 'dyslexia-assist') {
+                logResult('Received message from extension: ' + JSON.stringify(event.data), 'success');
+            }
+        });
+    </script>
+</body>
+</html>

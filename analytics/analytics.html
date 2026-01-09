@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyslexiaAssist - Usage Analytics</title>
+    <link rel="stylesheet" href="../options/options.css">
+    <style>
+        .analytics-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #667eea;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .feature-usage-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-usage-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .feature-usage-bar {
+            width: 100px;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .feature-usage-fill {
+            height: 100%;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+        
+        .recommendations-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .recommendation-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .recommendation-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        
+        .recommendation-desc {
+            color: #6c757d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="analytics-container">
+        <header class="header" style="margin-bottom: 30px;">
+            <div class="header-content">
+                <img src="../icons/icon48.svg" alt="DyslexiaAssist" class="logo">
+                <div class="header-text">
+                    <h1>Usage Analytics</h1>
+                    <p>Insights into your reading patterns and feature usage</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="total-sessions">0</div>
+                <div class="stat-label">Total Sessions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="reading-time">0h</div>
+                <div class="stat-label">Total Reading Time</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="texts-processed">0</div>
+                <div class="stat-label">Texts Processed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="features-used">0</div>
+                <div class="stat-label">Features Used</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3>Daily Usage Over Time</h3>
+            <canvas id="usage-chart" width="800" height="300"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3>Feature Usage Frequency</h3>
+            <ul class="feature-usage-list" id="feature-usage-list">
+                <!-- Feature usage items will be populated by JavaScript -->
+            </ul>
+        </div>
+
+        <div class="chart-container">
+            <h3>AI Recommendations</h3>
+            <ul class="recommendations-list" id="recommendations-list">
+                <!-- Recommendations will be populated by JavaScript -->
+            </ul>
+        </div>
+
+        <div class="chart-container">
+            <h3>Reading Improvement Metrics</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-reading-speed">0</div>
+                    <div class="stat-label">Avg Reading Speed (WPM)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="comprehension-score">0%</div>
+                    <div class="stat-label">Comprehension Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="difficulty-preference">Medium</div>
+                    <div class="stat-label">Content Difficulty</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="improvement-trend">↗</div>
+                    <div class="stat-label">Improvement Trend</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer" style="text-align: center; margin-top: 30px;">
+            <button class="btn btn-secondary" onclick="exportData()">Export Data</button>
+            <button class="btn btn-secondary" onclick="clearData()">Clear Data</button>
+            <button class="btn btn-primary" onclick="window.close()">Close</button>
+        </div>
+    </div>
+
+    <script src="analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TTS Debug Test</title>
+</head>
+<body>
+    <h1>Text-to-Speech Debug Test</h1>
+    <button onclick="testTTS()">Test Basic TTS</button>
+    <button onclick="listVoices()">List Available Voices</button>
+    <button onclick="testWithAlert()">Test TTS with Alert</button>
+    <div id="output"></div>
+    
+    <script>
+        function testTTS() {
+            const output = document.getElementById('output');
+            
+            if (!('speechSynthesis' in window)) {
+                output.innerHTML = '<p style="color: red;">ERROR: speechSynthesis not supported in this browser!</p>';
+                return;
+            }
+            
+            output.innerHTML = '<p>Testing basic TTS...</p>';
+            
+            const utterance = new SpeechSynthesisUtterance('Hello! This is a test of text to speech functionality.');
+            utterance.rate = 0.8;
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
+            
+            utterance.onstart = () => {
+                output.innerHTML += '<p style="color: green;">✓ Speech started!</p>';
+            };
+            
+            utterance.onend = () => {
+                output.innerHTML += '<p style="color: blue;">✓ Speech ended!</p>';
+            };
+            
+            utterance.onerror = (event) => {
+                output.innerHTML += '<p style="color: red;">✗ Speech error: ' + event.error + '</p>';
+            };
+            
+            speechSynthesis.speak(utterance);
+        }
+        
+        function testWithAlert() {
+            if (!('speechSynthesis' in window)) {
+                alert('speechSynthesis not supported');
+                return;
+            }
+            
+            speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance('Testing with alert. Can you hear me now?');
+            utterance.rate = 0.8;
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
+            
+            utterance.onstart = () => {
+                alert('TTS Started - You should hear audio');
+            };
+            
+            utterance.onerror = (event) => {
+                alert('TTS Error: ' + event.error);
+            };
+            
+            speechSynthesis.speak(utterance);
+            
+            setTimeout(() => {
+                alert('Speaking: ' + speechSynthesis.speaking + ', Pending: ' + speechSynthesis.pending);
+            }, 1000);
+        }
+        
+        function listVoices() {
+            const output = document.getElementById('output');
+            const voices = speechSynthesis.getVoices();
+            
+            if (voices.length === 0) {
+                output.innerHTML = '<p style="color: orange;">No voices found. Waiting for voices to load...</p>';
+                setTimeout(() => {
+                    const newVoices = speechSynthesis.getVoices();
+                    output.innerHTML += '<p>Found ' + newVoices.length + ' voices after delay.</p>';
+                    newVoices.forEach((voice, index) => {
+                        output.innerHTML += '<p>' + index + ': ' + voice.name + ' (' + voice.lang + ')</p>';
+                    });
+                }, 1000);
+                return;
+            }
+            
+            output.innerHTML = '<p>Found ' + voices.length + ' voices:</p>';
+            voices.forEach((voice, index) => {
+                output.innerHTML += '<p>' + index + ': ' + voice.name + ' (' + voice.lang + ')</p>';
+            });
+        }
+        
+        // Auto-load voices when page loads
+        window.addEventListener('load', () => {
+            setTimeout(listVoices, 500);
+        });
+        
+        // Also listen for voices changed event
+        if ('speechSynthesis' in window) {
+            speechSynthesis.onvoiceschanged = listVoices;
+        }
+    </script>
+</body>
+</html>

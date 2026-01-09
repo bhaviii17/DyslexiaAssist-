@@ -1,0 +1,87 @@
+{
+  "manifest_version": 3,
+  "name": "DyslexiaAssist",
+  "version": "1.0.0",
+  "description": "A browser extension to help users with dyslexia by providing accessibility features like font changes, spacing adjustments, and reading aids.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "contextMenus",
+    "tts"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "DyslexiaAssist",
+    "default_icon": {
+      "16": "icons/icon16.svg",
+      "32": "icons/icon32.svg",
+      "48": "icons/icon48.svg",
+      "128": "icons/icon128.svg"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.svg",
+    "32": "icons/icon32.svg",
+    "48": "icons/icon48.svg",
+    "128": "icons/icon128.svg"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "options_page": "options/options.html",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/*", 
+        "ai/*", 
+        "analytics/*", 
+        "ai/text-processor.js", 
+        "ai/personalization.js", 
+        "ai/advanced-ai.js",
+        "ai/accessibility-analyzer.js",
+        "ai/focus-mode.js",
+        "ai/reading-assistant.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "commands": {
+    "toggle-extension": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+D"
+      },
+      "description": "Toggle DyslexiaAssist on/off"
+    },
+    "toggle-reading-guide": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+R"
+      },
+      "description": "Toggle reading guide"
+    },
+    "process-selected-text": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+P"
+      },
+      "description": "Process selected text with AI"
+    },
+    "speak-selected-text": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S"
+      },
+      "description": "Speak selected text aloud"
+    }
+  }
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyslexiaAssist</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../icons/icon32.svg" alt="DyslexiaAssist Icon" class="logo">
+            <h1>DyslexiaAssist</h1>
+        </div>
+        
+        <div class="accessibility-score-section" id="accessibility-score-section">
+            <div class="score-header">
+                <h3>Page Accessibility Score</h3>
+                <button class="refresh-score-btn" id="refresh-score-btn" title="Refresh accessibility analysis">🔄</button>
+            </div>
+            <div class="score-display" id="score-display">
+                <div class="score-circle" id="score-circle">
+                    <span class="score-number" id="score-number">--</span>
+                    <span class="score-total">/100</span>
+                </div>
+                <div class="score-details" id="score-details">
+                    <div class="score-status" id="score-status">Analyzing...</div>
+                    <div class="score-breakdown" id="score-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Readability:</span>
+                            <span class="breakdown-value" id="readability-score">--</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Contrast:</span>
+                            <span class="breakdown-value" id="contrast-score">--</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Layout:</span>
+                            <span class="breakdown-value" id="layout-score">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="score-actions">
+                <button class="view-details-btn" id="view-details-btn">View Full Report</button>
+            </div>
+        </div>
+        
+        <div class="tts-section" id="tts-section">
+            <div class="tts-header">
+                <h3>Text-to-Speech</h3>
+                <div class="tts-status" id="tts-status">Ready</div>
+            </div>
+            <div class="tts-controls">
+                <div class="tts-main-controls">
+                    <button class="tts-btn primary" id="tts-read-page" title="Read entire page aloud">
+                        <span class="tts-icon">🔊</span>
+                        Read Page
+                    </button>
+                    <button class="tts-btn secondary" id="tts-read-selection" title="Read selected text">
+                        <span class="tts-icon">📖</span>
+                        Read Selection
+                    </button>
+                    <button class="tts-btn stop" id="tts-stop" title="Stop reading" disabled>
+                        <span class="tts-icon">⏹️</span>
+                        Stop
+                    </button>
+                    <button class="tts-btn test" id="tts-test" title="Test TTS functionality">
+                        <span class="tts-icon">🧪</span>
+                        Test TTS
+                    </button>
+                </div>
+                <div class="tts-settings">
+                    <div class="tts-setting">
+                        <label for="tts-speed">Speed:</label>
+                        <input type="range" id="tts-speed" min="0.5" max="2" step="0.1" value="1">
+                        <span id="tts-speed-value">1.0x</span>
+                    </div>
+                    <div class="tts-setting">
+                        <label for="tts-voice">Voice:</label>
+                        <select id="tts-voice">
+                            <option value="">Default</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="section">
+                <h3>Font Options</h3>
+                <div class="control-group">
+                    <label for="font-select">Font Type:</label>
+                    <select id="font-select">
+                        <option value="default">Default</option>
+                        <option value="open-dyslexic">OpenDyslexic</option>
+                        <option value="arial">Arial</option>
+                        <option value="verdana">Verdana</option>
+                        <option value="comic-sans">Comic Sans MS</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="font-size">Font Size:</label>
+                    <input type="range" id="font-size" min="12" max="24" value="16">
+                    <span id="font-size-value">16px</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Spacing</h3>
+                <div class="control-group">
+                    <label for="line-spacing">Line Spacing:</label>
+                    <input type="range" id="line-spacing" min="1" max="3" step="0.1" value="1.5">
+                    <span id="line-spacing-value">1.5</span>
+                </div>
+                
+                <div class="control-group">
+                    <label for="letter-spacing">Letter Spacing:</label>
+                    <input type="range" id="letter-spacing" min="0" max="5" step="0.1" value="0">
+                    <span id="letter-spacing-value">0px</span>
+                </div>
+                
+                <div class="control-group">
+                    <label for="word-spacing">Word Spacing:</label>
+                    <input type="range" id="word-spacing" min="0" max="10" step="0.5" value="0">
+                    <span id="word-spacing-value">0px</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Visual Aids</h3>
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="reading-guide">
+                        Reading Guide
+                    </label>
+                </div>
+                
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="highlight-links">
+                        Highlight Links
+                    </label>
+                </div>
+                
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="reduce-animations">
+                        Reduce Animations
+                    </label>
+                </div>
+            </div>
+
+            <div class="section ai-section">
+                <h3>AI Features</h3>
+                <div class="ai-status" id="ai-status">
+                    <span class="status-indicator" id="ai-status-indicator">●</span>
+                    <span id="ai-status-text">Checking AI status...</span>
+                </div>
+                
+                <div class="control-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="ai-enabled-popup">
+                        Enable AI Processing
+                    </label>
+                </div>
+                
+                <div class="ai-controls" id="ai-controls" style="display: none;">
+                    <div class="control-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="auto-simplify-popup">
+                            Auto-Simplify Text
+                        </label>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="auto-summarize-popup">
+                            Auto-Summarize Content
+                        </label>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="smart-translation-popup">
+                            Smart Translation
+                        </label>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="target-language-popup">Target Language:</label>
+                        <select id="target-language-popup">
+                            <option value="en">English</option>
+                            <option value="hi">Hindi (हिन्दी)</option>
+                            <option value="ta">Tamil (தமிழ்)</option>
+                            <option value="te">Telugu (తెలుగు)</option>
+                            <option value="bn">Bengali (বাংলা)</option>
+                            <option value="gu">Gujarati (ગુજરાતી)</option>
+                            <option value="mr">Marathi (मराठी)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="voice-commands-popup">
+                            Voice Commands
+                        </label>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="adaptive-learning-popup">
+                            Adaptive Learning
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="ai-quick-actions" id="ai-quick-actions" style="display: none;">
+                    <h4>Quick AI Actions</h4>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-btn" id="quick-simplify" title="Simplify current page">
+                            Simplify
+                        </button>
+                        <button class="quick-action-btn" id="quick-summarize" title="Summarize current page">
+                            Summarize
+                        </button>
+                        <button class="quick-action-btn" id="quick-translate" title="Translate current page">
+                            Translate
+                        </button>
+                        <button class="quick-action-btn" id="quick-analyze" title="Analyze reading difficulty">
+                            Analyze
+                        </button>
+                        <button class="quick-action-btn" id="quick-speak" title="Read page aloud">
+                            Speak
+                        </button>
+                        <button class="quick-action-btn" id="quick-voice" title="Start voice commands">
+                            Voice
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Color Filters</h3>
+                <div class="control-group">
+                    <label for="color-filter">Color Filter:</label>
+                    <select id="color-filter">
+                        <option value="none">None</option>
+                        <option value="yellow">Yellow Tint</option>
+                        <option value="blue">Blue Tint</option>
+                        <option value="green">Green Tint</option>
+                        <option value="sepia">Sepia</option>
+                        <option value="high-contrast">High Contrast</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="brightness">Brightness:</label>
+                    <input type="range" id="brightness" min="50" max="150" value="100">
+                    <span id="brightness-value">100%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="test-extension-btn" class="btn btn-secondary">Test Extension</button>
+            <button id="show-reader-btn" class="btn btn-primary">Open Reader</button>
+            <button id="reset-btn" class="btn btn-secondary">Reset All</button>
+            <button id="options-btn" class="btn btn-secondary">More Options</button>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+    <script src="../popup-tts-fix.js"></script>
+</body>
+</html>

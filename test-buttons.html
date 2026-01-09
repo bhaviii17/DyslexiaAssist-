@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyslexiaAssist Button Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        .header {
+            background: linear-gradient(135deg, #2d5a56, #4d9892);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .content-section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-instructions {
+            background: #e8f7f5;
+            border-left: 4px solid #2d5a56;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .feature-card {
+            background: #f0fffe;
+            border: 1px solid #2d5a56;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+        }
+        .feature-card h4 {
+            color: #2d5a56;
+            margin-bottom: 10px;
+        }
+        .sample-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DyslexiaAssist Extension Test Page</h1>
+        <p>Test the extension's button interface and features on this page</p>
+    </div>
+
+    <div class="test-instructions">
+        <h3>🧪 How to Test the Extension</h3>
+        <ol>
+            <li><strong>Load the Extension:</strong> Make sure the DyslexiaAssist extension is loaded in Chrome</li>
+            <li><strong>Open Content Popup:</strong> Click the extension icon in the browser toolbar</li>
+            <li><strong>Test Button Layout:</strong> Verify the organized button groups appear correctly</li>
+            <li><strong>Color Scheme:</strong> Check that the pale turquoise theme is applied consistently</li>
+            <li><strong>Button Functions:</strong> Test the main action buttons (Simplify, Summary, Translate)</li>
+        </ol>
+    </div>
+
+    <div class="content-section">
+        <h2>Sample Content for Testing</h2>
+        <div class="sample-text">
+            <p>This paragraph contains complex vocabulary and sophisticated sentence structures that would benefit from simplification for users with dyslexia. The intricate grammatical constructions and multifaceted terminology presented herein demonstrate the necessity for intelligent text processing capabilities.</p>
+            
+            <p>Furthermore, this comprehensive examination of linguistic complexity exemplifies the challenging nature of academic discourse. The implementation of artificial intelligence technologies facilitates the transformation of convoluted textual content into more accessible formats, thereby enhancing comprehension for individuals with reading difficulties.</p>
+            
+            <p>The technological infrastructure underlying this assistive tool incorporates machine learning algorithms and natural language processing methodologies to deliver personalized reading experiences. These sophisticated computational approaches enable real-time text analysis and adaptive content modification.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Feature Testing Checklist</h2>
+        <div class="feature-list">
+            <div class="feature-card">
+                <h4>Main Actions</h4>
+                <p>✓ Simplify Text<br>
+                ✓ Summarize<br>
+                ✓ Translate</p>
+            </div>
+            <div class="feature-card">
+                <h4>Secondary Tools</h4>
+                <p>✓ Text-to-Speech<br>
+                ✓ Voice Commands<br>
+                ✓ Difficulty Analysis<br>
+                ✓ AI Assistant</p>
+            </div>
+            <div class="feature-card">
+                <h4>Visual Elements</h4>
+                <p>✓ Pale Turquoise Theme<br>
+                ✓ Dark Green Accents<br>
+                ✓ Organized Layout<br>
+                ✓ No Emoji Clutter</p>
+            </div>
+            <div class="feature-card">
+                <h4>Interface Quality</h4>
+                <p>✓ Button Grouping<br>
+                ✓ Clear Labels<br>
+                ✓ Consistent Styling<br>
+                ✓ Professional Look</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Additional Test Content</h2>
+        <div class="sample-text">
+            <h3>Scientific Article Excerpt</h3>
+            <p>The neurobiological mechanisms underlying dyslexia involve aberrant connectivity patterns within the left hemisphere language network. Neuroimaging studies have consistently demonstrated hypoactivation in the left occipito-temporal region during reading tasks, particularly in areas associated with orthographic processing and visual word form recognition.</p>
+            
+            <h3>Technical Documentation</h3>
+            <p>The implementation leverages advanced computational linguistics frameworks to execute real-time semantic analysis and syntactic restructuring of textual input. The system architecture incorporates distributed processing paradigms to optimize latency and throughput for concurrent user sessions.</p>
+            
+            <h3>Academic Writing</h3>
+            <p>Contemporary pedagogical approaches emphasize the significance of multimodal instructional strategies in addressing diverse learning requirements. The integration of assistive technologies facilitates inclusive educational environments that accommodate varying cognitive processing capabilities and learning preferences.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Expected Results</h2>
+        <p><strong>After Testing:</strong></p>
+        <ul>
+            <li>Extension popup should display with organized button layout</li>
+            <li>Color scheme should be pale turquoise (#f0fffe) with green accents (#2d5a56)</li>
+            <li>Buttons should be grouped logically: Main Actions, Secondary Tools, System Actions</li>
+            <li>No emojis should appear in the interface</li>
+            <li>Text processing should work when AI features are configured</li>
+            <li>Interface should look professional and accessibility-focused</li>
+        </ul>
+    </div>
+
+    <script>
+        // Add some interactive elements for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DyslexiaAssist Test Page Loaded');
+            console.log('Extension should inject content script and show popup when activated');
+            
+            // Check if extension is loaded
+            setTimeout(() => {
+                const extensionIndicator = document.getElementById('dyslexia-assist-indicator');
+                if (extensionIndicator) {
+                    console.log('✅ Extension loaded successfully');
+                } else {
+                    console.log('❌ Extension not detected - check if it\'s loaded in Chrome');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
